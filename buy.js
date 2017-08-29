@@ -1,6 +1,7 @@
-const BTCMarkets = require('btc-markets');
+const BTCMarkets = require('btc-markets')
 const async      = require('async')
 const _          = require('lodash')
+const schedule   = require('node-schedule')
 
 // load the public and private keys from a json file
 const KEYS = require('./keys.json')
@@ -16,15 +17,13 @@ const SATOSHI = 100000000
 
 // percentage of portfolio
 const TOKEN_PERCENT = {
-  BTC: 0.6,
-  ETH: 0.3,
-  LTC: 0.05,
-  XRP: 0.05
+  BTC: 0.6, // 60%
+  ETH: 0.3, // 30%
+  LTC: 0.05, // 5%
+  XRP: 0.05 // 5%
 }
 
 var client = new BTCMarkets(KEYS.public, KEYS.secret)
-
-console.log('\n==== ' + new Date() + ' ====')
 
 /**
  * [Return an object that contains all the last prices for each token]
@@ -54,7 +53,10 @@ function getTokenPrices(cb) {
   }, cb)
 }
 
-getTokenPrices(function(e, res) {
+/**
+ * [buyHandler Take the token prices and submit orders in proportion]
+ */
+function buyHandler(e, res) {
   if (e) {
     console.log('An error occurred when getting prices, cancelling for today...')
     return;
@@ -81,4 +83,14 @@ getTokenPrices(function(e, res) {
       }
     });
   })
-})
+}
+
+// ==== MAIN ====
+
+console.log('---- Booting [Running every day at 12 AM] ----')
+
+// run this function every day at 12AM
+var run = schedule.scheduleJob({hour: 0, minute: 0}, function() {
+  console.log('\n==== ' + new Date() + ' ====')
+  getTokenPrices(buyHandler)
+});
