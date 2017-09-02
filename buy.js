@@ -17,9 +17,9 @@ const SATOSHI = 100000000
 
 // percentage of portfolio
 const TOKEN_PERCENT = {
-  BTC: 0.55, // 55%
+  BTC: 0.5, // 50%
   ETH: 0.4, // 40%
-  LTC: 0.05, // 5%
+  LTC: 0.1, // 10%
 }
 
 var client = new BTCMarkets(KEYS.public, KEYS.secret)
