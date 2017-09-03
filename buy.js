@@ -73,7 +73,7 @@ function buyHandler(e, res) {
     console.log('spend: $' + toSpend)
     console.log('volume: ' + volume + ' ' + coin )
 
-    client.createOrder(coin, FIAT_CURR, orderPrice, orderVolume, 'Bid', 'Limit', 'xx', function(e, res) {
+    client.createOrder(coin, FIAT_CURR, null, orderVolume, 'Bid', 'Market', 'xx', function(e, res) {
       if (res.success) {
         console.log('ordered ' + volume + ' ' + coin + ' @ $' + price + ' -- [$' + toSpend + ']')
       } else {
