@@ -43,12 +43,12 @@ function getTokenPrices(cb) {
         client.getTick('LTC', FIAT_CURR, function(e, res) {
           callback(e, res.lastPrice)
         })
-      },
-      XRP: function(callback) {
-        client.getTick('XRP', FIAT_CURR, function(e, res) {
-          callback(e, res.lastPrice)
-        })
       }
+      // XRP: function(callback) {
+      //   client.getTick('XRP', FIAT_CURR, function(e, res) {
+      //     callback(e, res.lastPrice)
+      //   })
+      // }
   }, cb)
 }
 
