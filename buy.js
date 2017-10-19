@@ -18,8 +18,9 @@ const SATOSHI = 100000000
 // percentage of portfolio
 const TOKEN_PERCENT = {
   BTC: 0.5, // 50%
-  ETH: 0.4, // 40%
+  ETH: 0.2, // 20%
   LTC: 0.1, // 10%
+  // Remaining 20% is in altcoins
 }
 
 var client = new BTCMarkets(KEYS.public, KEYS.secret)
@@ -44,11 +45,6 @@ function getTokenPrices(cb) {
           callback(e, res.lastPrice)
         })
       }
-      // XRP: function(callback) {
-      //   client.getTick('XRP', FIAT_CURR, function(e, res) {
-      //     callback(e, res.lastPrice)
-      //   })
-      // }
   }, cb)
 }
 
