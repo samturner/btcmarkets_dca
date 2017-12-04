@@ -10,11 +10,13 @@ I'm not a financial advisor. This is not financial advice. Never invest more tha
 
 ### Getting Started
 
-1. Get your API keys for BTCMarkets and add them to `keys.json`. DO NOT PUBLISH YOUR KEYS ANYWHERE.
+1. Run `npm install` to ensure dependencies are installed.
 
-2. Update the variables in the customisation section to match your investment strategy. It's best to test this with a very small `DAILY_SPEND` first.
+2. Get your API keys for BTCMarkets and add them to `keys.json`. DO NOT PUBLISH YOUR KEYS ANYWHERE.
 
-3. Run with `node buy.js`. To keep the script running indefinitely you can use something like [Forever](https://github.com/foreverjs/forever).
+3. Update the variables in the customisation section to match your investment strategy. It's best to test this with a very small `DAILY_SPEND` first.
+
+4. Run with `node buy.js`. To keep the script running indefinitely you can use something like [Forever](https://github.com/foreverjs/forever).
 
 ### Customisation
 
