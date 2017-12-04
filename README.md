@@ -4,11 +4,18 @@ This repository is an example showing how to implement [Dollar-Cost Averaging](h
 
 The strategy here is to purchase a number of cryptocurrencies at the same time every day regardless of the price.
 
+### Disclaimer
+
+I'm not a financial advisor. This is not financial advice. Never invest more than you're willing to lose. This code is provided as an example only and may contain bugs. Make sure you understand how it works before running it yourself.
+
 ### Getting Started
 
-To get started, get your API keys for BTCMarkets and make sure the `keys.json` file is populated with both your public and private keys. Then, run `node buy.js` to start the application.
+1. Get your API keys for BTCMarkets and add them to `keys.json`. DO NOT PUBLISH YOUR KEYS ANYWHERE.
 
-I'm using the [Forever](https://github.com/foreverjs/forever) package to keep this running indefinitely on my server. There are other (and probably better) ways to do it, this is up to you.
+2. Update the variables in the customisation section to match your investment strategy. It's best to test this with a very small `DAILY_SPEND` first.
+
+2. Start the server with `node buy.js`
+
 
 ### Customisation
 
