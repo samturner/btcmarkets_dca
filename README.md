@@ -14,8 +14,7 @@ I'm not a financial advisor. This is not financial advice. Never invest more tha
 
 2. Update the variables in the customisation section to match your investment strategy. It's best to test this with a very small `DAILY_SPEND` first.
 
-2. Start the server with `node buy.js`
-
+3. Run with `node buy.js`. To keep the script running indefinitely you can use something like [Forever](https://github.com/foreverjs/forever).
 
 ### Customisation
 

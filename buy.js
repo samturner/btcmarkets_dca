@@ -3,7 +3,7 @@ const async      = require('async')
 const _          = require('lodash')
 const schedule   = require('node-schedule')
 
-// load the public and private keys from a json file
+// load public and private keys from a json file
 const KEYS = require('./keys.json')
 
 // the total amount I want to spend each day
@@ -13,14 +13,14 @@ const DAILY_SPEND = 30
 const FIAT_CURR = "AUD"
 
 // all values are in SATOSHIS
+// https://en.bitcoin.it/wiki/Satoshi_(unit)
 const SATOSHI = 100000000
 
-// percentage of portfolio
+// Portfolio breakdown
 const TOKEN_PERCENT = {
-  BTC: 0.5, // 50%
+  BTC: 0.7, // 70%
   ETH: 0.2, // 20%
   LTC: 0.1, // 10%
-  // Remaining 20% is in altcoins
 }
 
 var client = new BTCMarkets(KEYS.public, KEYS.secret)
