@@ -7,7 +7,7 @@ const schedule   = require('node-schedule')
 const KEYS = require('./keys.json')
 
 // the total amount I want to spend each day
-const DAILY_SPEND = 30
+const WEEKLY_SPEND = 60
 
 // the currency I want to buy in
 const FIAT_CURR = "AUD"
@@ -18,9 +18,9 @@ const SATOSHI = 100000000
 
 // Portfolio breakdown
 const TOKEN_PERCENT = {
-  BTC: 0.7, // 70%
-  ETH: 0.2, // 20%
-  LTC: 0.1, // 10%
+  BTC: 0.4, // 40%
+  ETH: 0.3, // 30%
+  LTC: 0.3, // 30%
 }
 
 var client = new BTCMarkets(KEYS.public, KEYS.secret)
@@ -58,7 +58,7 @@ function buyHandler(e, res) {
   }
 
   _.forIn(res, function(price, coin) {
-    var toSpend = DAILY_SPEND * TOKEN_PERCENT[coin]
+    var toSpend = WEEKLY_SPEND * TOKEN_PERCENT[coin]
     var volume = toSpend / price
 
     var orderPrice = Math.round(price * SATOSHI)
@@ -82,10 +82,10 @@ function buyHandler(e, res) {
 
 // ==== MAIN ====
 
-console.log('---- Booting [Running every day at 12 AM] ----')
+console.log('---- Booting [Running every week] ----')
 
-// run this function every day at 12AM
-var run = schedule.scheduleJob({hour: 0, minute: 0}, function() {
+// run this function every sunday at 12AM (UTC)
+var run = schedule.scheduleJob({hour: 0, minute: 0, dayOfWeek: 0}, function() {
   console.log('\n==== ' + new Date() + ' ====')
   getTokenPrices(buyHandler)
 });
